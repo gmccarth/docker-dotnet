@@ -3,6 +3,8 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0
 COPY . /app
 WORKDIR /app
 RUN dotnet tool install --global dotnet-ef
+ENV PATH $PATH:/root/.dotnet/tools
+RUN dotnet ef --version
 RUN dotnet dev-certs https
 RUN ["dotnet", "restore"]
 RUN ["dotnet", "build"]
